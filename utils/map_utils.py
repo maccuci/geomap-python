@@ -22,8 +22,8 @@ class MapUtils:
                 "tipo": loc['type'],
                 "importancia": loc['importance'],
                 "tipo_endereco": loc['addresstype'],
-                "lat": loc['lat'],
-                "lon": loc['lon'],
+                "lat": float(loc['lat']),
+                "lon": float(loc['lon']),
             }
         }
         json_utils.add_citydata_json('./data/cidades_dados.json', data)
@@ -42,8 +42,8 @@ class MapUtils:
                 "tipo": address['type'],
                 "importancia": address['importance'],
                 "tipo_endereco": address['addresstype'],
-                "lat": address['lat'],
-                "lon": address['lon'],
+                "lat": float(address['lat']),
+                "lon": float(address['lon']),
             }
         }
         json_utils.add_citydata_json('./data/cidades_dados.json', data)

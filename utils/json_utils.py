@@ -2,11 +2,8 @@ import json
 
 
 class JsonUtils:
-    # not use, yet
-    # if all(isinstance(data.get(key), self.data_model[key]) for key in self.data_model):
-
     data_model = {
-        "{nome}": {
+        "{nome_id}": {
             "nome": str,
             "tipo": str,
             "importancia": str,
@@ -21,4 +18,10 @@ class JsonUtils:
             data_content = json.loads(f.read())
             data_content.update(data)
         with open(path_file, 'w') as f:
-            json.dump(data_content, f)
+            if all(
+                    isinstance(data.get(key), tuple(self.data_model[key]))
+                    if isinstance(self.data_model[key], tuple)
+                    else True
+                    for key in self.data_model
+            ):
+                json.dump(data_content, f)
